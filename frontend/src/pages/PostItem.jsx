@@ -107,7 +107,7 @@ const PostItem = () => {
     image3 && formData.append('image3', image3);
     image4 && formData.append('image4', image4);
 
-    const response = await axios.post('http://localhost:8000/api/products/add', formData) 
+    const response = await axios.post(`${import.meta.env.FRONTEND_URL}/api/products/add`, formData);
     if (response.data.sucess) {
       alert('Item posted successfully!');
       setTitle('');

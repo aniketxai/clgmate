@@ -78,7 +78,7 @@ const Home = () => {
   const [list, setList] = useState([]);
 const fetchList = async () => {
   try{
-    const response = await axios.get("http://localhost:8000/api/products/list");
+   const response = await axios.get(`${import.meta.env.FRONTEND_URL}/api/products/list`);
      if (response.data.sucess){
      setList(response.data.products);
      console.log(response.data.products[16]._id)

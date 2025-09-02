@@ -83,7 +83,7 @@ const ItemDetail = () => {
   const fetchList = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:8000/api/products/single/${itemId}`);
+      const response = await axios.get(`${import.meta.env.FRONTEND_URL}/api/products/single/${itemId}`);
       if (response.data.sucess) { // Note: your API has "sucess" instead of "success"
         setItem(response.data.product);
         console.log(response.data.product);
