@@ -5,7 +5,7 @@ import Category from './pages/Category';
 import ItemDetail from './pages/ItemDetail';
 import PostItem from './pages/PostItem';
 import Profile from './pages/Profile';
-import Login from './pages/login';
+import Login from './pages/Login';
 import './App.css';
 import{GoogleOAuthProvider} from '@react-oauth/google'
 import { useState } from 'react';
