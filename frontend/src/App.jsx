@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import './App.css';
 import{GoogleOAuthProvider} from '@react-oauth/google'
 import { useState } from 'react';
+import UserDetail from './pages/UserDetail';
 
 
 function App() {
@@ -38,6 +39,7 @@ const GoogleAuthWrapper = () => {
             <Route path="/item/:itemId" element={<ItemDetail />} />
             <Route path="/post" element={<PostItem />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/user" element={<UserDetail />} />
             <Route path="*" element={<h1>404 Page Not Found</h1>} />
           </Routes>
         </main>

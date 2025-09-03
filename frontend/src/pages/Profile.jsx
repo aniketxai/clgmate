@@ -9,14 +9,10 @@ const Profile = () => {
     const userInfo = localStorage.getItem('user');
     if (userInfo) {
       setUser(JSON.parse(userInfo));
-     
-      
     } else {
       setUser(null);
     }
   }, []);
-
-
 
   const [activeTab, setActiveTab] = useState('listings');
 
@@ -68,6 +64,19 @@ const Profile = () => {
     }
   ];
 
+  // Add loading state or early return if user1 is null
+  if (!user1) {
+    return (
+      <div className="profile-page">
+        <div className="container">
+          <div className="text-center py-8">
+            <p>Loading profile...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="profile-page">
       <div className="container">
@@ -77,7 +86,7 @@ const Profile = () => {
               <User size={48} />
             </div>
             <div className="user-details">
-              <h2>{user.name}</h2>
+              <h2>{user1.name}</h2>
               <p className="text-neutral-600">{user.year}</p>
               <p className="text-neutral-600">{user.college}</p>
               <div className="user-stats">

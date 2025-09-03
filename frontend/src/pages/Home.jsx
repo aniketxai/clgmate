@@ -137,10 +137,7 @@ useEffect(() => {
 }, [searchParams, items]);
   return (
     <div className="home">
-      <Hero />
-      <CategoryGrid />
-      
-      <section className="featured-items">
+   <section className="featured-items">
         <div className="container">
           <div className="section-header">
             <h2>Recent Items</h2>
