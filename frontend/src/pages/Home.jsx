@@ -140,8 +140,7 @@ useEffect(() => {
    <section className="featured-items">
         <div className="container">
           <div className="section-header">
-            <h2>Recent Items</h2>
-            <p className="text-neutral-600">Fresh listings from your campus community</p>
+            <h3>Recent Items</h3>
           </div>
           
           <div className="grid grid-cols-3 items-grid">
