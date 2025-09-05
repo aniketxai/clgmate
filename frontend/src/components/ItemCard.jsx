@@ -2,11 +2,10 @@ import { Link } from 'react-router-dom';
 import { Heart, MapPin, Clock } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-
 const ItemCard = ({ item }) => {
-
-// State to trigger re-render
+  // State to trigger re-render
   const [now, setNow] = useState(Date.now());
+  const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,36 +28,51 @@ const ItemCard = ({ item }) => {
     return `${Math.floor(diff / 31536000)} yrs ago`;
   }
 
-
-
-
-
-
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsFavorited(!isFavorited);
+  };
 
   return (
-    <div className="item-card card">
-      <Link to={`/item/${item._id}`} className="item-link">
-        <div className="item-image-container">
-          <img src={item.image[0]} alt={item.title} className="item-image" />
-          <button className="favorite-btn">
-            <Heart size={20} />
+    <div className="modern-item-card">
+      <Link to={`/item/${item._id}`} className="modern-item-link">
+        <div className="modern-image-wrapper">
+          <img 
+            src={item.image[0]} 
+            alt={item.name} 
+            className="modern-item-image"
+            loading="lazy"
+          />
+          <div className="modern-image-overlay"></div>
+          <button 
+            className={`modern-favorite-btn ${isFavorited ? 'favorited' : ''}`}
+            onClick={handleFavoriteClick}
+            aria-label="Add to favorites"
+          >
+            <Heart size={18} fill={isFavorited ? 'currentColor' : 'none'} />
           </button>
         </div>
-        <div className="item-content">
-          <h4 className="item-title">{item.name}</h4>
-          <div className="item-price">₹{item.price.toLocaleString()}</div>
-          <div className="item-details">
-            <div className="item-location">
-              <MapPin size={14} />
-              <span>{item.location}</span>
-            </div>
-            <div className="item-time">
-  <Clock size={14} />
-  <span>{timeAgo(item.date)}</span>
-</div>
+        
+        <div className="modern-card-content">
+          <div className="modern-header">
+            <h3 className="modern-item-title">{item.name}</h3>
+            <div className="modern-price-tag">₹{item.price.toLocaleString()}</div>
           </div>
-          <div className="item-condition">
-            <span className={`condition-badge ${item.condition.toLowerCase()}`}>
+          
+          <div className="modern-meta-info">
+            <div className="modern-location-info">
+              <MapPin size={16} className="modern-icon" />
+              <span className="modern-location-text">{item.location}</span>
+            </div>
+            <div className="modern-time-info">
+              <Clock size={16} className="modern-icon" />
+              <span className="modern-time-text">{timeAgo(item.date)}</span>
+            </div>
+          </div>
+          
+          <div className="modern-condition-wrapper">
+            <span className={`modern-condition-badge condition-${item.condition.toLowerCase()}`}>
               {item.condition}
             </span>
           </div>

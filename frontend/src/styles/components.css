@@ -1116,3 +1116,367 @@
             width: 95%;
           }
         }
+
+        /* Modern ItemCard Styles - Pure CSS */
+.modern-item-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+}
+
+.modern-item-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  border-color: #cbd5e1;
+}
+
+.modern-item-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.modern-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.modern-item-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.modern-item-card:hover .modern-item-image {
+  transform: scale(1.05);
+}
+
+.modern-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+}
+
+.modern-item-card:hover .modern-image-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modern-favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.modern-favorite-btn:hover {
+  background: white;
+  color: #ef4444;
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modern-favorite-btn.favorited {
+  color: #ef4444;
+  background: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.modern-card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modern-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modern-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 52px;
+  max-height: 52px;
+}
+
+.modern-price-tag {
+  font-size: 24px;
+  font-weight: 700;
+  color: #059669;
+  line-height: 1.2;
+}
+
+.modern-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  min-height: 48px;
+}
+
+.modern-location-info,
+.modern-time-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  min-height: 20px;
+}
+
+.modern-icon {
+  color: #94a3b8;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.modern-location-text,
+.modern-time-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  flex: 1;
+}
+
+.modern-condition-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  min-height: 32px;
+  align-items: center;
+}
+
+.modern-condition-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.condition-excellent {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.condition-good {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.condition-fair {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.condition-poor {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.condition-new {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.condition-used {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* Grid layout for parent containers */
+.modern-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modern-item-card {
+    border-radius: 12px;
+    max-width: none;
+    margin: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modern-card-content {
+    padding: 16px;
+    gap: 14px;
+  }
+  
+  .modern-header {
+    gap: 10px;
+  }
+  
+  .modern-item-title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    min-height: 44px;
+    max-height: 44px;
+    -webkit-line-clamp: 2;
+  }
+  
+  .modern-price-tag {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  .modern-meta-info {
+    gap: 10px;
+    font-size: 14px;
+    min-height: 52px;
+  }
+  
+  .modern-location-info,
+  .modern-time-info {
+    min-height: 21px;
+    gap: 10px;
+  }
+  
+  .modern-location-text,
+  .modern-time-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .modern-condition-wrapper {
+    min-height: 34px;
+    margin-top: 2px;
+  }
+  
+  .modern-condition-badge {
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 18px;
+  }
+  
+  .modern-favorite-btn {
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .modern-items-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .modern-item-card {
+    max-width: 280px;
+  }
+
+  .modern-items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .modern-item-card {
+    max-width: 300px;
+  }
+
+  .modern-items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (min-width: 1025px) {
+  .modern-item-card {
+    max-width: 320px;
+  }
+
+  .modern-items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+/* Loading skeleton styles */
+.modern-card-skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.modern-card-skeleton .modern-image-wrapper {
+  background: #e2e8f0;
+}
+
+.modern-card-skeleton .modern-item-title {
+  background: #e2e8f0;
+  border-radius: 4px;
+  height: 24px;
+}
+
+.modern-card-skeleton .modern-price-tag {
+  background: #e2e8f0;
+  border-radius: 4px;
+  height: 32px;
+  width: 96px;
+}
+
+.modern-card-skeleton .modern-meta-info > div {
+  background: #e2e8f0;
+  border-radius: 4px;
+  height: 16px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
