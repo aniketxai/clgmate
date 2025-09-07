@@ -35,7 +35,7 @@ const ItemCard = ({ item }) => {
   };
 
   // Check if item is sold
-  const isSold = item.status === 'sold' || item.sold === true;
+  const isSold = item.active === 'sold' || item.active === false;
 
   return (
     <div className={`modern-item-card ${isSold ? 'sold-item' : ''}`}>
@@ -61,12 +61,7 @@ const ItemCard = ({ item }) => {
         </div>
         
         <div className="modern-card-content">
-          {item.category && (
-            <div className="modern-category">
-              <Tag size={12} className="modern-icon" />
-              <span className="modern-category-text">{item.category}</span>
-            </div>
-          )}
+          
           <div className="modern-header">
             <h3 className="modern-item-title">{item.name}</h3>
             <div className="modern-price-tag">₹{item.price.toLocaleString()}</div>
@@ -82,11 +77,7 @@ const ItemCard = ({ item }) => {
             </div>
           </div>
           
-          <div className="modern-condition-wrapper">
-            <span className={`modern-condition-badge condition-${item.condition.toLowerCase()}`}>
-              {item.condition}
-            </span>
-          </div>
+         
         </div>
       </Link>
     </div>
