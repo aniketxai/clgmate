@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import CategoryGrid from '../components/CategoryGrid';
 import ItemCard from '../components/ItemCard';
 import axios from 'axios';
+import LoadingCard from '../components/LoadingCard';
 
 
 
@@ -150,9 +151,19 @@ useEffect(() => {
           </div>
           
           {filteredItems.length === 0 && (
-            <div className="no-results">
-              <h3>No items found</h3>
-              <p>Try adjusting your search terms or browse categories above.</p>
+             <div className="grid grid-cols-3 items-grid">
+              <LoadingCard />
+               <LoadingCard />
+                <LoadingCard />
+                 <LoadingCard />
+                  <LoadingCard />
+                   <LoadingCard />
+                    <LoadingCard />
+                     <LoadingCard />
+                      <LoadingCard />
+                       <LoadingCard />
+                        <LoadingCard />
+                         <LoadingCard />
             </div>
           )}
         </div>

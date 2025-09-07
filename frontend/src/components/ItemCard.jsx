@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Heart, MapPin, Clock } from 'lucide-react';
+import { Heart, MapPin, Clock, Tag } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const ItemCard = ({ item }) => {
@@ -34,8 +34,11 @@ const ItemCard = ({ item }) => {
     setIsFavorited(!isFavorited);
   };
 
+  // Check if item is sold
+  const isSold = item.status === 'sold' || item.sold === true;
+
   return (
-    <div className="modern-item-card">
+    <div className={`modern-item-card ${isSold ? 'sold-item' : ''}`}>
       <Link to={`/item/${item._id}`} className="modern-item-link">
         <div className="modern-image-wrapper">
           <img 
@@ -45,6 +48,9 @@ const ItemCard = ({ item }) => {
             loading="lazy"
           />
           <div className="modern-image-overlay"></div>
+          {isSold && (
+            <div className="sold-overlay">SOLD</div>
+          )}
           <button 
             className={`modern-favorite-btn ${isFavorited ? 'favorited' : ''}`}
             onClick={handleFavoriteClick}
@@ -55,17 +61,22 @@ const ItemCard = ({ item }) => {
         </div>
         
         <div className="modern-card-content">
+          {item.category && (
+            <div className="modern-category">
+              <Tag size={12} className="modern-icon" />
+              <span className="modern-category-text">{item.category}</span>
+            </div>
+          )}
           <div className="modern-header">
             <h3 className="modern-item-title">{item.name}</h3>
             <div className="modern-price-tag">₹{item.price.toLocaleString()}</div>
           </div>
           
           <div className="modern-meta-info">
-            <div className="modern-location-info">
+            <div className="modern-location-time-info">
               <MapPin size={16} className="modern-icon" />
               <span className="modern-location-text">{item.location}</span>
-            </div>
-            <div className="modern-time-info">
+              <span className="modern-separator">•</span>
               <Clock size={16} className="modern-icon" />
               <span className="modern-time-text">{timeAgo(item.date)}</span>
             </div>

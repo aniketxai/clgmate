@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
     location: { type: String, required: true },
     active: { type: Boolean, default: true },
     date: { type: Date, default: Date.now },
+    seller: { type: String },
     condition: { type: String, required: true },
 });   
 const productModel =  mongoose.models.product || mongoose.model('Product', productSchema);

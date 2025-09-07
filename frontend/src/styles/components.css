@@ -1117,7 +1117,7 @@
           }
         }
 
-        /* Modern ItemCard Styles - Pure CSS */
+       /* Modern ItemCard Styles - Pure CSS */
 .modern-item-card {
   background: white;
   border-radius: 16px;
@@ -1181,6 +1181,30 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
+.sold-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(239, 68, 68, 0.95);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.sold-item {
+  opacity: 0.7;
+}
+
+.sold-item:hover {
+  opacity: 0.8;
+}
+
 .modern-favorite-btn {
   position: absolute;
   top: 12px;
@@ -1217,7 +1241,22 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+.modern-category {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.modern-category-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .modern-header {
@@ -1250,18 +1289,25 @@
 .modern-meta-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   font-size: 14px;
-  min-height: 48px;
+  min-height: 24px;
+  margin-top: 4px;
 }
 
-.modern-location-info,
-.modern-time-info {
+.modern-location-time-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   color: #64748b;
-  min-height: 20px;
+  min-height: 24px;
+  flex-wrap: wrap;
+}
+
+.modern-separator {
+  color: #cbd5e1;
+  font-weight: 500;
+  margin: 0 2px;
 }
 
 .modern-icon {
@@ -1283,8 +1329,9 @@
 .modern-condition-wrapper {
   display: flex;
   justify-content: flex-start;
-  min-height: 32px;
+  min-height: 28px;
   align-items: center;
+  margin-top: 2px;
 }
 
 .modern-condition-badge {
@@ -1346,12 +1393,16 @@
   }
   
   .modern-card-content {
-    padding: 16px;
-    gap: 14px;
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .modern-category {
+    margin-bottom: 6px;
   }
   
   .modern-header {
-    gap: 10px;
+    gap: 12px;
   }
   
   .modern-item-title {
@@ -1367,18 +1418,19 @@
     font-size: 22px;
     font-weight: 700;
     line-height: 1.1;
+    margin-bottom: 4px;
   }
   
   .modern-meta-info {
-    gap: 10px;
+    gap: 8px;
     font-size: 14px;
-    min-height: 52px;
+    min-height: 26px;
+    margin-top: 6px;
   }
   
-  .modern-location-info,
-  .modern-time-info {
-    min-height: 21px;
-    gap: 10px;
+  .modern-location-time-info {
+    min-height: 26px;
+    gap: 8px;
   }
   
   .modern-location-text,
@@ -1388,8 +1440,8 @@
   }
   
   .modern-condition-wrapper {
-    min-height: 34px;
-    margin-top: 2px;
+    min-height: 30px;
+    margin-top: 4px;
   }
   
   .modern-condition-badge {
@@ -1449,27 +1501,58 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.modern-card-skeleton .modern-image-wrapper {
+.skeleton-image {
+  width: 100%;
+  height: 100%;
   background: #e2e8f0;
+  border-radius: 0;
 }
 
-.modern-card-skeleton .modern-item-title {
-  background: #e2e8f0;
-  border-radius: 4px;
-  height: 24px;
+.skeleton-favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: #f1f5f9;
+  border-radius: 50%;
 }
 
-.modern-card-skeleton .modern-price-tag {
-  background: #e2e8f0;
-  border-radius: 4px;
-  height: 32px;
-  width: 96px;
-}
-
-.modern-card-skeleton .modern-meta-info > div {
-  background: #e2e8f0;
-  border-radius: 4px;
+.skeleton-category {
   height: 16px;
+  width: 80px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-title {
+  background: #e2e8f0;
+  border-radius: 4px;
+  height: 20px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.skeleton-price {
+  background: #e2e8f0;
+  border-radius: 4px;
+  height: 28px;
+  width: 120px;
+}
+
+.skeleton-location-time {
+  background: #e2e8f0;
+  border-radius: 4px;
+  height: 18px;
+  width: 100%;
+}
+
+.skeleton-condition {
+  background: #e2e8f0;
+  border-radius: 12px;
+  height: 24px;
+  width: 70px;
 }
 
 @keyframes pulse {
